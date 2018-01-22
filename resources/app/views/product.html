@@ -1,0 +1,247 @@
+<!--
+<div class="row" ng-hide="currentStatus !== 'A'">
+  <div class="col-sm-12 text-center">
+    <h3>dddddd</h3>
+  </div>
+</div>
+-->
+<div class="row ng-hide" ng-show="currentStatus == 'A'">
+  <div class="col-sm-12 text-center">
+    <h3>Bio-Server Client APP</h3>
+  
+   <script language="JavaScript">
+
+   let shell = require('electron').shell
+document.addEventListener('click', function (event) {
+  if (event.target.tagName === 'A' && event.target.href.startsWith('http')) {
+    event.preventDefault()
+    shell.openExternal(event.target.href)
+  }
+})</script>
+<h5><a target="_blank" href="http://104.215.55.168:3000">Bio-Server Web Page</a></h5>
+
+  </div>
+<div class="container">
+    <div class="wrapper">
+        <div class="content-main">
+            <div class="box">
+                
+                <div class="box-body">
+                    <h3>ADD</h3>
+                    <p>Register FP; Add user FP into Bio server Database</p>
+                    <button class="btn btn-primary" ng-click="processAddFunction()">ADD</button>                
+                </div>
+            </div>
+        </div>
+        <div class="content-secondary">
+            <div class="box">
+               
+                <div class="box-body">
+                    <h3>IDENTIFY</h3>
+                    <p>Identify by User FP</p>
+                    <button class="btn btn-primary" ng-click="processSearchFunction()">IDENTIFY</button>             
+                </div>
+            </div>
+        </div>
+        <div class="content-secondary">
+            <div class="box">
+               
+                <div class="box-body">
+                    <h3>VERIFY</h3>
+                    <p>Match FP and ID</p>
+                    <button class="btn btn-primary" ng-click="processVerFunction()">VERIFY</button>             
+                </div>
+            </div>
+        </div>
+        <div class="content-secondary">
+            <div class="box">
+               
+                <div class="box-body">
+                    <h3>DELETE</h3>
+                    <p>Delete user FP from Bio server Database</p>
+                    <button class="btn btn-primary" ng-click="processDelFunction()">Delete</button>            
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--
+  <div class="col-sm-12 text-center">
+      <button class="btn btn-primary" ng-click="processSearchFunction()">搜尋 - Sea</button>
+  </div>
+
+  <div class="col-sm-12 text-center">
+      <button class="btn btn-primary" ng-click="processAddFunction()">新增 - Add</button>
+  </div>
+  <div class="col-sm-12 text-center">
+      <button class="btn btn-primary" ng-click="processDelFunction()">刪除 - Del</button>
+  </div>
+   <div class="col-sm-12 text-center">
+      <button class="btn btn-primary" ng-click="processVerFunction()">驗證 - Ver</button>
+  </div>
+  -->
+</div>
+
+<div class="row ng-hide" ng-show="currentStatus =='C'">
+  <div class="col-sm-12 text-center">
+    <h3>Scan User Fingprint</h3>
+  </div>
+  <div class="col-sm-4 text-center ng-hide" ng-show = "showImage">
+     
+         <img id="fingerprintImage1111" ng-show="currentStatus == 'C'" ng-src="{{fingerprintImageURL}}" class="img-responsive" width="264" height="324" />
+     
+  </div>
+</div>
+<div class="row ng-hide" ng-show="currentStatus =='B'">
+  <div class="col-sm-12 text-center"  ng-show = "functionSelect == 'S'" >
+    <h3>Search Data</h3>
+  </div>
+  <div class="col-sm-12 text-center"  ng-show = "functionSelect == 'V'" >
+    <h3>Verify Data</h3>
+  </div>
+  <div class="col-sm-4 text-center ng-hide" ng-show = "showImage">
+        <img id="fingerprintImage1111" ng-src="{{fingerprintImageURL}}" class="img-responsive" width="264" height="324" />
+  </div>
+</div>
+<div class="col-sm-8 ng-hide" ng-show="currentStatus == 'S'">
+      <div class="col-sm-12 text-center">
+          <h3>Information</h3>
+      </div>
+
+      <p>ID：<spfingerprintImageURLan ng-bind="payer"></span></p>
+      
+      <!--<p>Score：<span ng-bind="totalPrice"></span></p>-->
+      <p>Time：<span ng-bind="totalTime"></span> Sec</p>
+      <p>Number of Minutiae：<span ng-bind="NumofMinutiae"></span></p>
+     <!-- <img src="{{fingerprintImageURL}}" alt="ERROR" width="500" height="400">-->
+      <br>
+      <br>
+      <div class="col-sm-12 text-center">
+       <button class="btn btn-primary" ng-show="functionSelect == 'S'" ng-click="processAgainFunction()">Search Again</button>  
+       <button class="btn btn-primary" ng-show="functionSelect == 'V'" ng-click="processAgainFunction()">Verify Again</button> 
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <button class="btn btn-primary" ng-click="refreshHTML()">Back</button>
+      </div>
+</div>
+
+<div class="col-sm-8 ng-hide" ng-show="currentStatus == 'F'">
+      <div class="col-sm-12 text-center">
+          <h3>Information</h3>
+      </div>
+
+      <p>ID：<span ng-bind="payer"></span></p>
+      
+      <!--<p>Score：<span ng-bind="totalPrice"></span></p>-->
+      <p>Time：<span ng-bind="totalTime"></span> Sec</p>
+      <p>Number of Minutiae：<span ng-bind="NumofMinutiae"></span></p>
+      <!--<iframe id="bioserver" width="1000" height="60%"></iframe>
+     <script>
+        document.getElementById('bioserver').src = "http://104.215.55.168:3000/?random=" + (new Date()).getTime() + Math.floor(Math.random() * 1000000);
+        document.getElementById('bioserver').src = document.getElementById('bioserver').src;
+      </script>-->
+      <div class="col-sm-12 text-center">
+       <button class="btn btn-primary" ng-show="functionSelect == 'S'" ng-click="processAgainFunction()">Search Again</button>  
+       <button class="btn btn-primary" ng-show="functionSelect == 'V'" ng-click="processAgainFunction()">Verify Again</button> 
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <button class="btn btn-primary" ng-click="refreshHTML()">Back</button>
+      </div>
+</div>
+
+<div class="row ng-hide" ng-show="currentStatus == 'Y'">
+   <div class="col-sm-12 text-center">
+    <h3>Data Verify</h3>
+  </div>
+  <br>
+  <br>
+
+  <div class="col-sm-12 text-center" autofocus="autofocus">
+    <h3>Input User ID (0-6 Digitial)</h3>
+  </div>  
+  <div class="col-sm-12 text-center">
+   <form>
+   <input type="text" name="name" id="UID" autofocus="autofocus">    
+  </form>  
+  </div>>
+   <div class="col-sm-12 text-center">
+   <br><br>
+    <button class="btn btn-primary" ng-click="refreshHTML()">Back</button>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button class="btn btn-primary" ng-click="nextStep()">Next</button> 
+   </div>
+</div>
+
+<div class="row ng-hide" ng-show="currentStatus == 'Z'">
+  <div class="col-sm-12 text-center">
+    <h3>Input User Information</h3>
+  </div>
+   
+   <br><br><br>
+   <form>
+      Input User ID：<input type="text" maxlength="6" size="6" name="name" id="userID" autofocus="autofocus" >
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       Input User FP ID：
+        <select id="fpID">
+          <option value=1 SELECTED>Right index finger</option>
+          <option value=2>Lift index finger</option>
+          <option value=3>Right middle finger</option>
+          <option value=4>Left middle finger</option>
+          <option value=5>Right ring finger</option>
+          <option value=6>Left ring finger</option>
+          <option value=7>Right little finger</option>
+          <option value=8>Left little finger</option>
+          <option value=9>Right thumb</option>
+          <option value=0>Left thumb</option>
+        </select>
+  </form>
+    <h6></h6>
+    
+    <div >
+      <img src="{{fingerprintImageURL}}" alt="ERROR" width="264" height="324">
+      <img src="{{arrowImageURL}}" alt="ERROR" width="150" height="150">
+        
+      <textarea style="width:150px;height:165px;">
+　       Minutiae {{minu_Buffer}}
+      </textarea>        
+   </div> 
+   <div class="col-sm-12 text-center">
+   <br><br>
+   <button class="btn btn-primary" ng-click="refreshHTML()">Back</button>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button class="btn btn-primary" ng-click="submit()">Send</button> 
+   </div>
+   
+</div>
+<div class="row ng-hide" ng-show="currentStatus == 'D'">
+  <div class="col-sm-12 text-center">
+    <h3>Delete User Data</h3>
+  </div>
+   
+   <br><br><br>
+   <form>
+      Input User ID：<input type="text" maxlength="6" size="6" name="name" id="userid" autofocus="autofocus" >
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       Input User FP ID：
+        <select id="fpid">
+          <option value=1 SELECTED>Right index finger</option>
+          <option value=2>Lift index finger</option>
+          <option value=3>Right middle finger</option>
+          <option value=4>Left middle finger</option>
+          <option value=5>Right ring finger</option>
+          <option value=6>Left ring finger</option>
+          <option value=7>Right little finger</option>
+          <option value=8>Left little finger</option>
+          <option value=9>Right thumb</option>
+          <option value=0>Left thumb</option>
+        </select>
+  </form>
+    <h6></h6>
+    
+   
+   <div class="col-sm-12 text-center">
+   <br><br> <br><br> <br><br>
+   <button class="btn btn-primary" ng-click="refreshHTML()">Back</button>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button class="btn btn-primary" ng-click="submit()">Confirm</button> 
+   </div>
+   
+</div>

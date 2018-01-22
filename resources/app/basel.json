@@ -1,0 +1,6 @@
+{
+    "name": "go2pay",
+    "database": "database",
+    "title": "Bio Server",
+    "type": "simple"
+}
